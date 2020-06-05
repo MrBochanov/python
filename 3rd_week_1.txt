@@ -1,0 +1,90 @@
+def f(x):
+    y = 0.0
+    if x <= -2:
+        y = 1 - ((x + 2)*(x + 2))
+        return y
+    if -2 < x <=2:
+        y = - (x/2)
+        return y
+    if x > 2:
+        y = ((x - 2)*(x - 2)) + 1
+        return y
+
+==================================================
+
+def modify_list(l):
+    for i in l:
+        if i % 2 == 0:
+            y = i // 2
+            index = l.index(i)
+            l.insert(index,y)
+            l.remove(i)
+        else:
+            index = l.index(i)
+            l.insert(index, '0')
+            l.remove(i)
+
+    while '0' in l:
+        l.remove('0')
+        
+==================================================
+
+def update_dictionary(d, key, value):
+    if key in d.keys():
+        d[key] += [value]
+    if key not in d.keys():
+        newkey = int(key)*2
+        if newkey not in d.keys():
+            d[newkey] = [value]
+        else:
+            d[newkey] += [value]
+
+==================================================
+
+a = [str(i) for i in input().split()]
+d = {}
+
+for i in a:
+    if i.lower() not in d.keys():
+        d[i.lower()] = 1
+    else:
+        d[i.lower()] += 1
+
+#print(d)
+for key,value in d.items():
+    print(key, value)
+
+==================================================
+
+# Считайте, что функция f(x) уже определена выше. Определять её отдельно не требуется.
+
+x = {}
+z = []
+n = int(input())
+
+for i in range(n):
+    key = int(input())
+    z += [key]
+    if key not in x.keys():
+        x[key] = f(key)
+
+for i in z:
+    print(x[i])
+
+==================================================
+
+import math
+
+R = float(input())
+
+S = R*(2*math.pi)
+print(S)
+
+==================================================
+
+import sys
+ 
+length = len(sys.argv)
+
+for i in range(1,length):
+	print(sys.argv[i], end = " ")

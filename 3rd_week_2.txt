@@ -1,0 +1,152 @@
+n = int(input())
+matches = []
+tablica = {}
+
+for i in range(n):
+    match = input().split(';')
+    matches += [match]
+
+#print(matches[1][0])
+
+for m in matches:
+    if m[0] not in tablica.keys():
+        tablica[m[0]] = [1,0,0,0,0]
+    else:
+        tablica[m[0]][0] += 1
+
+    if m[2] not in tablica.keys():
+        tablica[m[2]] = [1, 0, 0, 0, 0]
+    else:
+        tablica[m[2]][0] += 1
+
+    if m[1] > m[3]:
+        tablica[m[0]][1] += 1
+        tablica[m[2]][3] += 1
+    elif m[1] < m[3]:
+        tablica[m[0]][3] += 1
+        tablica[m[2]][1] += 1
+    else:
+        tablica[m[0]][2] += 1
+        tablica[m[2]][2] += 1
+
+for command in tablica.values():
+    command[4] = 3*command[1] + command[2]
+
+#print(tablica)
+for key,value in tablica.items():
+    print(key, end = ':')
+    for i in value:
+        print(i, end = ' ')
+    print()
+
+==================================================
+
+a = input()
+A = []
+
+for i in a:
+    A += [i]
+
+
+b = input()
+B = []
+
+for i in b:
+    B += [i]
+
+length = len(a)
+
+d = {}
+
+for i in range(length):
+    d[A[i]] = B[i]
+
+#print(d)
+
+c = input()
+C = []
+
+for i in c:
+    if i in d.keys():
+        C += d[i]
+
+e = input()
+E = []
+
+for i in e:
+    if i in d.values():
+        for key,value in d.items():
+            if value == i:
+                E += key
+
+for i in C:
+    print(i,end = '')
+print()
+
+for i in E:
+    print(i,end = '')
+
+==================================================
+
+d = int(input())
+nazi = []
+
+for i in range(d):
+    nazi += [str(input()).lower()]
+
+l = int(input())
+text = []
+
+for i in range(l):
+    text2 = [str(input().lower()).split(' ')]
+    for k in text2:
+        for m in k:
+            text += [m]
+
+errors = []
+
+for word in text:
+    if word not in nazi:
+        if word not in errors:
+            errors += [word]
+
+for i in errors:
+    print(i)
+	
+	
+==================================================
+
+n = int(input())
+d = {}
+
+for i in range(n):
+    tmp = input().split(' ')
+    if tmp[0] not in d.keys():
+        d[tmp[0]] = int(tmp[1])
+    else:
+        d[tmp[0]] += int(tmp[1])
+
+res = [0,0]
+x = 0
+y = 0
+
+if 'восток' in d.keys():
+    x = d['восток']
+
+if 'запад' in d.keys():
+    y = d['запад']
+    
+res[0] = x - y    
+
+x = 0
+y = 0
+
+if 'север' in d.keys():
+    x = d['север']
+
+if 'юг' in d.keys():
+    y = d['юг']
+    
+res[1] = x - y    
+
+print(res[0], res[1])

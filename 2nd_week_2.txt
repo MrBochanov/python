@@ -1,0 +1,152 @@
+a = []
+s = -1
+summa = 1
+
+while summa != 0:
+    i = int(input())
+    s += 1
+    summa = 0
+    a += [i]
+    for p in range(0, s+1):
+        summa += int(a[p])
+
+
+#print(a)
+for p in range(0, s+1):
+    summa += int(a[p])*int(a[p])
+
+print(summa)
+
+==================================================
+
+n = int(input())
+a = []
+
+for i in range (1,n+1):
+    a += [i]*i
+
+for i in range (0,n):
+    print(a[i], end = ' ')
+
+==================================================
+
+a = [int(i) for i in input().split()]
+b = int(input())
+c = []
+
+for i in a:
+    if b == i:
+        c += [a.index(i)]
+        a[a.index(i)] = b + 1
+
+if c == []:print('Отсутствует')
+else:
+    for i in c:
+        print(i, end = " ")
+
+==================================================
+
+b = []
+inp = ""
+A=0
+B=0
+C=0
+D=0
+
+while inp != "end":
+    inp = input()
+    if inp != "end":
+        a = [int(i) for i in inp.split()]
+        b += [a]
+
+x = len(b)
+y = len(b[0])
+
+c = [[0 for j in range(y)] for i in range(x)]
+
+for i in range(x):
+    for j in range(y):
+        if i == 0:
+            A = b[x-1][j]
+        else:
+            A = b[i-1][j]
+
+        if i == x-1:
+            B = b[0][j]
+        else:
+            B = b[i+1][j]
+
+        if j == 0:
+            C = b[i][y-1]
+        else:
+            C = b[i][j-1]
+
+        if j == y-1:
+            D = b[i][0]
+        else:
+            D = b[i][j+1]
+
+           # c[i][j] = b[i - 1][j] + b[i + 1][j] + b[i][j - 1] + b[i][j + 1]
+        c[i][j] = A+B+C+D
+
+for i in c:
+    end =""
+    for z in i:
+        end += str(z) + " "
+    print(end)
+
+'''
+for i in range(x):
+    for j in range(y):
+        print(c[i][j])>
+'''
+
+==================================================
+
+n = int(input())
+
+a = [[0 for j in range(n)] for i in range(n)]
+
+z = 1
+x = 0
+y = 0
+
+xlimitmax = n-1
+ylimitmax = n-1
+
+xlimitmin = 0
+ylimitmin = 0
+
+while z < n*n:
+ while  (y < ylimitmax) and (z <= n*n):
+     a[x][y] = z
+     z += 1
+     y += 1
+ ylimitmax -= 1
+ while (x < xlimitmax) and (z <= n*n):
+     a[x][y] = z
+     z += 1
+     x += 1
+ xlimitmax -= 1
+ while (y > ylimitmin) and (z <= n*n):
+     a[x][y] = z
+     z += 1
+     y -= 1
+ ylimitmin += 1
+ while (x > xlimitmin) and (z <= n*n):
+     a[x][y] = z
+     z += 1
+     x -= 1
+ xlimitmin += 1
+ x += 1
+ y += 1
+ continue
+
+if n*n%2 != 0:
+    a[x][y] = z
+
+
+for q in a:
+    print()
+    for j in q:
+        print(j, end=" ")
